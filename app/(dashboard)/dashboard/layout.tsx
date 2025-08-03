@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Users, Settings, Shield, Activity, Menu } from 'lucide-react';
+import { Home, Menu, ShieldCheck } from 'lucide-react'; // Using ShieldCheck for Noodles
 
 export default function DashboardLayout({
   children
@@ -14,11 +14,11 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Updated navigation for "The Anchor"
   const navItems = [
-    { href: '/dashboard', icon: Users, label: 'Team' },
-    { href: '/dashboard/general', icon: Settings, label: 'General' },
-    { href: '/dashboard/activity', icon: Activity, label: 'Activity' },
-    { href: '/dashboard/security', icon: Shield, label: 'Security' }
+    { href: '/dashboard', icon: Home, label: 'Dashboard' },
+    { href: '/dashboard/noodles', icon: ShieldCheck, label: 'Noodles' },
+    // We will add more links here as we build them (e.g., Future Goals)
   ];
 
   return (
@@ -26,7 +26,7 @@ export default function DashboardLayout({
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between bg-white border-b border-gray-200 p-4">
         <div className="flex items-center">
-          <span className="font-medium">Settings</span>
+          <span className="font-medium">The Anchor</span>
         </div>
         <Button
           className="-mr-3"
@@ -57,7 +57,7 @@ export default function DashboardLayout({
                   }`}
                   onClick={() => setIsSidebarOpen(false)}
                 >
-                  <item.icon className="h-4 w-4" />
+                  <item.icon className="mr-2 h-4 w-4" />
                   {item.label}
                 </Button>
               </Link>
