@@ -75,7 +75,8 @@ export const signUp = validatedAction(signUpSchema, async (data) => {
 
 // --- Sign Out Action ---
 export async function signOut() {
-  cookies().delete('session');
+  // FIX: Added 'await' before cookies()
+  (await cookies()).delete('session');
   redirect('/');
 }
 
